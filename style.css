@@ -112,54 +112,10 @@ html, body {
 }
 
 .header-right {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
+  display: none;
 }
 
 .hud-btn {
-  background: rgba(8, 13, 28, 0.06);
-  border: 1px solid rgba(8, 13, 28, 0.12);
-  color: rgba(8, 13, 28, 0.75);
-  width: 36px;
-  height: 36px;
-  padding: 0;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.2s ease;
-}
-
-.hud-label {
-  display: none;
-}
-
-.hud-btn:hover {
-  background: rgba(8, 13, 28, 0.1);
-  color: var(--color-navy-deep);
-  border-color: rgba(8, 13, 28, 0.25);
-}
-
-.hud-btn.active {
-  background: var(--color-rahat-red);
-  border-color: var(--color-rahat-red);
-  color: #fff;
-}
-
-.hud-btn .icon {
-  width: 14px;
-  height: 14px;
-}
-
-.sound-mute-line {
-  display: none;
-}
-.hud-btn.sound-muted .sound-mute-line {
-  display: block;
-}
-.hud-btn.sound-muted .sound-wave {
   display: none;
 }
 
