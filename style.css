@@ -1428,27 +1428,15 @@ html, body {
 }
 
 .footer-center {
-  flex: 1;
-  max-width: 480px;
-  margin: 0 2rem;
+  display: none;
 }
 
 .deck-progress-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(8, 13, 28, 0.12);
-  border-radius: 9999px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
+  display: none;
 }
 
 .deck-progress-fill {
-  height: 100%;
-  width: 11.11%;
-  background: var(--color-rahat-red);
-  border-radius: 9999px;
-  transition: width 0.3s var(--ease-smooth);
+  display: none;
 }
 
 /* Dark Theme State for Footer (Slide 06) */
