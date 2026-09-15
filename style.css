@@ -198,7 +198,7 @@ html, body {
 .slide-inner {
   width: 100%;
   height: 100%;
-  padding: 1.5rem 2.5rem 1.8rem 2.5rem;
+  padding: 1.8rem 2.8rem;
   display: flex;
   position: relative;
   z-index: 2;
@@ -1331,68 +1331,23 @@ html, body {
    Footer Navigation - Clean Transparent HUD (No Blurred Bars)
    -------------------------------------------------------------------------- */
 .deck-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: var(--footer-height);
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.2rem;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  pointer-events: auto;
+  display: none !important;
 }
 
 .nav-arrow-btn {
-  background: rgba(8, 13, 28, 0.06);
-  border: 1px solid rgba(8, 13, 28, 0.12);
-  color: rgba(8, 13, 28, 0.75);
-  padding: 0.45rem 1rem;
-  border-radius: 9999px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.7rem;
-  letter-spacing: 0.15em;
-  font-weight: 700;
-  transition: all 0.2s ease;
-}
-
-.nav-arrow-btn:hover {
-  background: rgba(8, 13, 28, 0.12);
-  color: var(--color-navy-deep);
-}
-
-.nav-arrow-btn.primary {
-  background: var(--color-rahat-red);
-  border-color: var(--color-rahat-red);
-  color: #fff;
-}
-
-.nav-arrow-btn.primary:hover {
-  background: #ff2a52;
-}
-
-.nav-arrow-btn svg {
-  width: 14px;
-  height: 14px;
+  display: none !important;
 }
 
 .footer-center {
-  display: none;
+  display: none !important;
 }
 
 .deck-progress-track {
-  display: none;
+  display: none !important;
 }
 
 .deck-progress-fill {
-  display: none;
+  display: none !important;
 }
 
 /* Dark Theme State for Footer (Slide 06) */

@@ -43,26 +43,26 @@ class PresentationDeck {
   }
 
   bindEvents() {
-    // Nav Buttons
-    document.getElementById('btn-prev').addEventListener('click', () => this.prev());
-    document.getElementById('btn-next').addEventListener('click', () => this.next());
+    // Nav Buttons (Defensive check)
+    document.getElementById('btn-prev')?.addEventListener('click', () => this.prev());
+    document.getElementById('btn-next')?.addEventListener('click', () => this.next());
     
-    // HUD Buttons
-    document.getElementById('btn-grid').addEventListener('click', () => this.toggleTray());
-    document.getElementById('btn-fullscreen').addEventListener('click', () => this.toggleFullscreen());
-    this.btnSound.addEventListener('click', () => this.toggleAmbientAudio());
+    // HUD Buttons (Defensive check)
+    document.getElementById('btn-grid')?.addEventListener('click', () => this.toggleTray());
+    document.getElementById('btn-fullscreen')?.addEventListener('click', () => this.toggleFullscreen());
+    this.btnSound?.addEventListener('click', () => this.toggleAmbientAudio());
     
     // Tray Close
-    document.getElementById('btn-close-tray').addEventListener('click', () => this.toggleTray(false));
-    document.getElementById('tray-backdrop').addEventListener('click', () => this.toggleTray(false));
+    document.getElementById('btn-close-tray')?.addEventListener('click', () => this.toggleTray(false));
+    document.getElementById('tray-backdrop')?.addEventListener('click', () => this.toggleTray(false));
     
     // Shortcuts Dialog
-    document.getElementById('btn-close-dialog').addEventListener('click', () => {
-      this.shortcutsDialog.classList.remove('open');
+    document.getElementById('btn-close-dialog')?.addEventListener('click', () => {
+      this.shortcutsDialog?.classList.remove('open');
     });
 
     // Progress Track Seek
-    this.progressTrackEl.addEventListener('click', (e) => {
+    this.progressTrackEl?.addEventListener('click', (e) => {
       const rect = this.progressTrackEl.getBoundingClientRect();
       const clickRatio = (e.clientX - rect.left) / rect.width;
       const targetIndex = Math.floor(clickRatio * this.totalSlides);
@@ -72,11 +72,42 @@ class PresentationDeck {
     // Keyboard Controller
     window.addEventListener('keydown', (e) => this.handleKeyDown(e));
 
-    // Slide Tap / Click Progression
-    document.getElementById('deck-viewport').addEventListener('click', (e) => {
-      if (e.target.closest('video') || e.target.closest('button') || e.target.closest('.hud-btn')) return;
-      this.next();
-    });
+    // Full PPT Slide Click Progression: Left 15% -> Prev, rest -> Next
+    const viewport = document.getElementById('deck-viewport');
+    if (viewport) {
+      viewport.addEventListener('click', (e) => {
+        if (e.target.closest('video') || e.target.closest('button') || e.target.closest('a')) return;
+        const rect = viewport.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        if (clickX < rect.width * 0.15) {
+          this.prev();
+        } else {
+          this.next();
+        }
+      });
+    }
+
+    // Touch Swipe Navigation for PPT presentation
+    let touchStartX = 0;
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) {
+          this.next();
+        } else {
+          this.prev();
+        }
+      }
+    }, { passive: true });
 
     // Video Click to toggle play
     document.querySelectorAll('video').forEach(video => {
@@ -92,14 +123,14 @@ class PresentationDeck {
   }
 
   handleKeyDown(e) {
-    if (this.shortcutsDialog.classList.contains('open')) {
+    if (this.shortcutsDialog?.classList.contains('open')) {
       if (e.key === 'Escape' || e.key === 'Enter') {
         this.shortcutsDialog.classList.remove('open');
       }
       return;
     }
 
-    if (this.slideTrayModal.classList.contains('open')) {
+    if (this.slideTrayModal?.classList.contains('open')) {
       if (e.key === 'Escape' || e.key === 'Tab' || e.key.toLowerCase() === 'i') {
         this.toggleTray(false);
       }
@@ -110,7 +141,10 @@ class PresentationDeck {
       case 'ArrowRight':
       case 'ArrowDown':
       case 'PageDown':
+      case 'Enter':
       case ' ': // Space bar
+      case 'n':
+      case 'N':
         e.preventDefault();
         this.next();
         break;
@@ -118,8 +152,21 @@ class PresentationDeck {
       case 'ArrowLeft':
       case 'ArrowUp':
       case 'PageUp':
+      case 'Backspace':
+      case 'p':
+      case 'P':
         e.preventDefault();
         this.prev();
+        break;
+
+      case 'Home':
+        e.preventDefault();
+        this.goToSlide(0);
+        break;
+
+      case 'End':
+        e.preventDefault();
+        this.goToSlide(this.totalSlides - 1);
         break;
 
       case 'f':
