@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAHAT — Making Space | Inauguration Presentation</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="presentation-app" class="deck-container">
+    
+    <!-- Top Minimal HUD / Header -->
+    <header class="deck-header">
+      <div class="header-left">
+        <div class="brand-monogram">
+          <span class="brand-tag">RAHAT</span>
+          <span class="divider">/</span>
+          <span class="chapter-indicator" id="current-chapter">INAUGURATION</span>
+        </div>
+      </div>
+      <div class="header-center">
+        <span class="slide-counter"><span id="slide-num">01</span> <span class="counter-sep">/</span> <span id="total-slides">09</span></span>
+      </div>
+      <div class="header-right">
+        <button id="btn-sound" class="hud-btn" title="Toggle Ambient Soundscape">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M11 5L6 9H2v6h4l5 4V5z"></path>
+            <path class="sound-wave" d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+            <path class="sound-wave" d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+            <line class="sound-mute-line" x1="1" y1="1" x2="23" y2="23"></line>
+          </svg>
+          <span class="hud-label">ATMOSPHERE</span>
+        </button>
+        <button id="btn-grid" class="hud-btn" title="Slide Overview (Tab)">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span class="hud-label">INDEX</span>
+        </button>
+        <button id="btn-fullscreen" class="hud-btn" title="Fullscreen (F)">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+          </svg>
+          <span class="hud-label">CINEMA</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Presentation Viewport (16:9 Cinematic Stage) -->
+    <main class="deck-viewport" id="deck-viewport">
+      <div class="slides-wrapper" id="slides-wrapper">
+
+        <!-- ==========================================
+             SLIDE 01 — HERO OPENING (Giant Logo & Title)
+             ========================================== -->
+        <section class="slide slide-01 theme-ivory active" data-chapter="ACT I — MAKING SPACE" data-index="1">
+          <div class="slide-inner opening-layout">
+            <div class="hero-center-content">
+              <!-- Giant Logo Frame -->
+              <div class="hero-logo-frame-large">
+                <img src="assets/logos/rahat_logo.jpeg" alt="Rahat Official Logo" class="official-logo-img">
+              </div>
+              
+              <!-- Giant Club Title -->
+              <div class="hero-typography">
+                <div class="hero-estd-large">ESTABLISHED 2023 • MIT BENGALURU</div>
+                <h1 class="hero-title-giant">RAHAT</h1>
+                <p class="hero-definition-lead">
+                  A student-led club and media house focused on mental well-being.
+                </p>
+                <div class="hero-tagline-whisper">
+                  <span class="tag-part">MAKING SPACE</span>
+                  <span class="tag-sep">•</span>
+                  <span class="tag-part italic">Rahat to all.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 02 — THE PREMISE (FEELING OKAY)
+             ========================================== -->
+        <section class="slide slide-02 theme-ivory" data-chapter="ACT I — MAKING SPACE" data-index="2">
+          <div class="slide-inner immersive-split-layout">
+            <!-- Major Visuals (Occupies 60% of slide) -->
+            <div class="split-visuals-large">
+              <div class="visual-hero-main">
+                <img src="assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_01.jpeg" alt="Students engaging at Rahat space" class="editorial-img">
+              </div>
+              <div class="visual-hero-sub">
+                <img src="assets/08_RAHAT_BOOTH_OUTREACH/classroom_talk.jpeg" alt="Rahat Classroom Session" class="editorial-img">
+              </div>
+            </div>
+
+            <!-- Bold Editorial Typography -->
+            <div class="split-text-side">
+              <div class="editorial-eyebrow">THE PREMISE</div>
+              <h2 class="editorial-serif-headline">
+                What does feeling okay look like?
+              </h2>
+              <div class="editorial-paragraph-serif">
+                “Sometimes, it doesn’t look like a formal conversation about mental health.”
+              </div>
+              <div class="editorial-statement-accent">
+                Sometimes, it simply looks like finding a space to be.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 03 — RAHAT: THE EVOLUTION (Giant Logos)
+             ========================================== -->
+        <section class="slide slide-03 theme-ivory" data-chapter="ACT II — EVOLUTION OF IDENTITY" data-index="3">
+          <div class="slide-inner evolution-layout">
+            <div class="evolution-header">
+              <h2 class="evolution-headline">FROM WHERE WE STARTED <span class="arrow-accent">→</span> TO WHERE WE ARE GOING</h2>
+            </div>
+
+            <!-- Visual Evolution Transformation Stage with Giant Logos -->
+            <div class="evolution-stage-container">
+              <!-- Left: Old Logo -->
+              <div class="evolution-card card-old">
+                <div class="evolution-badge">THEN</div>
+                <div class="logo-circle-wrapper old-logo-frame">
+                  <img src="assets/logos/rahat_old_logo.jpeg" alt="Original Rahat Logo" class="evolution-logo-img">
+                </div>
+                <div class="evolution-caption">THE FOUNDATION (ESTD. 2023)</div>
+              </div>
+
+              <!-- Center: Elegant Visual Transition Bridge -->
+              <div class="evolution-bridge">
+                <div class="bridge-line">
+                  <div class="bridge-pulse"></div>
+                </div>
+                <div class="bridge-tag">GROWTH & EXPANSION</div>
+              </div>
+
+              <!-- Right: New Logo -->
+              <div class="evolution-card card-new">
+                <div class="evolution-badge active-now">NOW</div>
+                <div class="logo-circle-wrapper new-logo-frame">
+                  <img src="assets/logos/rahat_logo.jpeg" alt="New Rahat Logo" class="evolution-logo-img">
+                </div>
+                <div class="evolution-caption highlight">THE NEW CHAPTER</div>
+              </div>
+            </div>
+
+            <!-- Bottom Statement -->
+            <div class="evolution-bottom-editorial">
+              <h3 class="evolution-manifesto-title">“Same purpose. A wider canvas.”</h3>
+              <p class="evolution-manifesto-sub">
+                From a student-led mental well-being community to a space for conversations, creativity, connection and stories that matter.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 04 — WHAT WE'VE DONE (CREATING SPACE)
+             ========================================== -->
+        <section class="slide slide-04 theme-ivory" data-chapter="ACT II — WHAT WE HAVE BUILT" data-index="4">
+          <div class="slide-inner full-gallery-layout">
+            <div class="compact-header-row">
+              <div>
+                <span class="editorial-eyebrow">THE JOURNEY SO FAR</span>
+                <h2 class="compact-title">“We started by creating space for expression, creativity and play.”</h2>
+              </div>
+              <div class="tags-cluster">
+                <span class="tag-badge">FEELINGS BOARD</span>
+                <span class="tag-badge">MEMORY BOX</span>
+                <span class="tag-badge">MANOVRITTI</span>
+                <span class="tag-badge">TECHSOLSTICE</span>
+              </div>
+            </div>
+
+            <!-- Multi-Image Immersive Grid (Occupies 85% of slide) -->
+            <div class="gallery-immersive-grid past-initiatives-grid">
+              <div class="grid-panel panel-hero-board">
+                <img src="assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg" alt="All Feelings Are OK Board" class="editorial-img">
+              </div>
+              <div class="grid-panel panel-manovritti">
+                <img src="assets/04_MANOVRITTI/manovritti_group_photo.jpeg" alt="Manovritti Tote Bag Workshop" class="editorial-img">
+              </div>
+              <div class="grid-panel panel-memory">
+                <img src="assets/03_MEMORY_BOX/memory_box_activity.png" alt="Memory Box Ritual" class="editorial-img">
+              </div>
+              <div class="grid-panel panel-games">
+                <img src="assets/06_GAMES_TREASURE_HUNT/treasure_hunt_poster.jpeg" alt="Treasure Hunt" class="editorial-img">
+              </div>
+              <div class="grid-panel panel-nexus">
+                <img src="assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg" alt="Techsolstice Nexus" class="editorial-img">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 05 — WHAT COMES NEXT (LARGE IMAGES & LARGE TEXT)
+             ========================================== -->
+        <section class="slide slide-05 theme-ivory" data-chapter="ACT III — THE HORIZON" data-index="5">
+          <div class="slide-inner future-redesigned-layout">
+            
+            <!-- Left: Fully Visible Large Images of Real Initiatives -->
+            <div class="future-left-visuals">
+              <div class="future-visual-title-row">
+                <span class="editorial-eyebrow">WHAT WE'VE DONE</span>
+                <h3 class="future-section-h3">WE STARTED BY CREATING SPACE.</h3>
+              </div>
+              
+              <div class="future-big-gallery">
+                <div class="big-gal-item gal-item-1">
+                  <img src="assets/04_MANOVRITTI/manovritti_group_photo.jpeg" alt="Manovritti workshop" class="editorial-img">
+                </div>
+                <div class="big-gal-item gal-item-2">
+                  <img src="assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg" alt="Feelings board" class="editorial-img">
+                </div>
+                <div class="big-gal-item gal-item-3">
+                  <img src="assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_02.jpeg" alt="Outreach desk" class="editorial-img">
+                </div>
+              </div>
+
+              <div class="progression-pill-bar">
+                <span>COMMUNITY</span> → <span>CONVERSATION</span> → <span>CREATIVITY</span> → <span>MEDIA</span> → <span class="highlight">IMPACT</span>
+              </div>
+            </div>
+
+            <!-- Right: Clear, Bold, Large Typography for Future Pillars -->
+            <div class="future-right-expansion">
+              <div class="future-visual-title-row">
+                <span class="editorial-eyebrow">WHAT COMES NEXT</span>
+                <h3 class="future-section-h3 text-red">NOW, WE'RE MAKING THE SPACE BIGGER.</h3>
+              </div>
+
+              <div class="future-pillars-stack-large">
+                <!-- Pillar 1 -->
+                <div class="pillar-row-large">
+                  <div class="p-num-large">01</div>
+                  <div class="p-text-large">
+                    <h4 class="p-title-large">RAHAT AS A MEDIA HOUSE</h4>
+                    <p class="p-sub-large">Conversations with people who create social impact.</p>
+                  </div>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="pillar-row-large">
+                  <div class="p-num-large">02</div>
+                  <div class="p-text-large">
+                    <h4 class="p-title-large">RAHAT CARNIVAL</h4>
+                    <p class="p-sub-large">A day of games, activities, creativity and connection.</p>
+                  </div>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="pillar-row-large">
+                  <div class="p-num-large">03</div>
+                  <div class="p-text-large">
+                    <h4 class="p-title-large">OPEN THEATRE</h4>
+                    <p class="p-sub-large">Movies, conversations and shared experiences under one roof.</p>
+                  </div>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="pillar-row-large highlight-pillar">
+                  <div class="p-num-large">04</div>
+                  <div class="p-text-large">
+                    <h4 class="p-title-large">CONTINUING THE CORE</h4>
+                    <p class="p-sub-large">Mental well-being remains at the heart of everything we do.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="future-grand-punch">
+                MORE STORIES. MORE SPACES. MORE RAHAT.
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 06 — CINEMATIC SCALE: 700+ (ALL VIDEOS UNCLIPPED & SUBSTANTIALLY ENLARGED ARCHIVE)
+             ========================================== -->
+        <section class="slide slide-06 theme-dark" data-chapter="ACT IV — SCALE & MOMENTUM" data-index="6">
+          <div class="slide-inner scale-perfect-layout">
+            <!-- Left Massive Stat Block with Substantially Enlarged Archive Badge -->
+            <div class="scale-stat-column-fixed">
+              <div class="stat-number-mega">700+</div>
+              <div class="stat-serif-word">REGISTRATIONS</div>
+              <div class="stat-packed-word">ONE PACKED HOUSE</div>
+              <div class="stat-quote-subtle">
+                “A room full of people who showed up, watched, laughed, and shared the moment.”
+              </div>
+              <!-- Substantially Enlarged Image -->
+              <div class="scale-badge-giant">
+                <img src="assets/09_AUDITORIUM_SCREENING/700_plus_registrations_packed_house.png" alt="700+ registrations archive" class="editorial-img">
+              </div>
+            </div>
+
+            <!-- Right Stage with All Videos Fully Visible Without Cutoff -->
+            <div class="scale-stage-unclipped">
+              <!-- Main Wide Video 02 -->
+              <div class="unclipped-wide-frame">
+                <video id="video-02" class="editorial-video wide-16-9" src="assets/11_VIDEOS/video_02_audience_wide.mp4" preload="metadata" playsinline loop muted></video>
+              </div>
+              <!-- Vertical Video 03 (Auditorium Screen - Full Height) -->
+              <div class="unclipped-vertical-frame">
+                <video id="video-03" class="editorial-video" src="assets/11_VIDEOS/video_03_auditorium_screen_vertical.mov" preload="metadata" playsinline loop muted></video>
+              </div>
+              <!-- Vertical Video 06 (Audience & Event - Full Height) -->
+              <div class="unclipped-vertical-frame">
+                <video id="video-06" class="editorial-video" src="assets/11_VIDEOS/video_06_event_vertical.mov" preload="metadata" playsinline loop muted></video>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 07 — CORE COMMITTEE (PERFECT PORTRAIT RATIOS & COMPLETE VISIBILITY)
+             ========================================== -->
+        <section class="slide slide-07 theme-ivory" data-chapter="ACT V — THE LEADERSHIP" data-index="7">
+          <div class="slide-inner committee-perfect-layout">
+            
+            <!-- Sleek Header -->
+            <div class="committee-top-bar">
+              <div>
+                <span class="editorial-eyebrow">LEADERSHIP & STEWARDSHIP</span>
+                <h2 class="committee-hero-heading">THE PEOPLE BEHIND RAHAT</h2>
+              </div>
+              <div class="committee-sub-badge">
+                <span>Core Committee | 2026–27</span>
+                <span class="dot-sep">•</span>
+                <span>ESTD. 2023</span>
+              </div>
+            </div>
+
+            <!-- 2-Tier Structured Vertical Portrait Gallery -->
+            <div class="committee-structured-roster">
+              
+              <!-- Top Row: President & Vice President (Prominent 3:4 Portrait Frames) -->
+              <div class="comm-tier-top">
+                <!-- 1. TANVI — PRESIDENT (Reserved Placeholder) -->
+                <div class="comm-exec-card">
+                  <div class="comm-portrait-box placeholder-comm-bg">
+                    <div class="comm-placeholder-content">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                      <span class="tag-tba">PHOTO TO BE ADDED</span>
+                    </div>
+                  </div>
+                  <div class="comm-label-banner">
+                    <h3 class="comm-exec-name">TANVI</h3>
+                    <div class="comm-exec-role pres-role">PRESIDENT</div>
+                  </div>
+                </div>
+
+                <!-- 2. PAVAN — VICE PRESIDENT -->
+                <div class="comm-exec-card">
+                  <div class="comm-portrait-box">
+                    <img src="assets/committee/pavan_pic.jpeg" alt="Pavan - Vice President" class="comm-portrait-img pavan-portrait">
+                  </div>
+                  <div class="comm-label-banner">
+                    <h3 class="comm-exec-name">PAVAN</h3>
+                    <div class="comm-exec-role vp-role">VICE PRESIDENT</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bottom Row: 5 Leads (Balanced 3:4 Portrait Cards) -->
+              <div class="comm-tier-bottom">
+                
+                <!-- 3. TANISH — GENERAL SECRETARY -->
+                <div class="comm-lead-card">
+                  <div class="comm-lead-photo-box">
+                    <img src="assets/committee/tanish_pic.jpeg" alt="Tanish" class="comm-portrait-img tanish-portrait">
+                  </div>
+                  <div class="comm-lead-label">
+                    <h4 class="comm-lead-name">TANISH</h4>
+                    <div class="comm-lead-role">GENERAL SECRETARY</div>
+                  </div>
+                </div>
+
+                <!-- 4. AKSHITA — CREATIVE LEAD -->
+                <div class="comm-lead-card">
+                  <div class="comm-lead-photo-box">
+                    <img src="assets/committee/akshita_pic.jpeg" alt="Akshita" class="comm-portrait-img akshita-portrait">
+                  </div>
+                  <div class="comm-lead-label">
+                    <h4 class="comm-lead-name">AKSHITA</h4>
+                    <div class="comm-lead-role">CREATIVE LEAD</div>
+                  </div>
+                </div>
+
+                <!-- 5. HAASINI — OPERATIONS LEAD -->
+                <div class="comm-lead-card">
+                  <div class="comm-lead-photo-box">
+                    <img src="assets/committee/haasini_pic.jpeg" alt="Haasini" class="comm-portrait-img haasini-portrait">
+                  </div>
+                  <div class="comm-lead-label">
+                    <h4 class="comm-lead-name">HAASINI</h4>
+                    <div class="comm-lead-role">OPERATIONS LEAD</div>
+                  </div>
+                </div>
+
+                <!-- 6. KESHAV — TREASURER -->
+                <div class="comm-lead-card">
+                  <div class="comm-lead-photo-box">
+                    <img src="assets/committee/keshav_pic.jpeg" alt="Keshav" class="comm-portrait-img keshav-portrait">
+                  </div>
+                  <div class="comm-lead-label">
+                    <h4 class="comm-lead-name">KESHAV</h4>
+                    <div class="comm-lead-role">TREASURER</div>
+                  </div>
+                </div>
+
+                <!-- 7. MANYA — WEB & SOCIAL MEDIA MANAGER -->
+                <div class="comm-lead-card">
+                  <div class="comm-lead-photo-box">
+                    <img src="assets/committee/manya_pic.jpeg" alt="Manya" class="comm-portrait-img manya-portrait">
+                  </div>
+                  <div class="comm-lead-label">
+                    <h4 class="comm-lead-name">MANYA</h4>
+                    <div class="comm-lead-role">WEB & SOCIAL MEDIA</div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 08 — CONNECT & JOIN US (DEDICATED QR SLIDE - SECOND TO LAST)
+             ========================================== -->
+        <section class="slide slide-08 theme-ivory" data-chapter="ACT VI — CONNECT WITH US" data-index="8">
+          <div class="slide-inner qr-slide-layout">
+            
+            <div class="qr-header-block">
+              <span class="editorial-eyebrow text-center">STAY CONNECTED</span>
+              <h2 class="qr-main-title text-center">JOIN THE RAHAT COMMUNITY</h2>
+              <p class="qr-subtitle text-center">Scan to follow our journey, join discussions, and be part of upcoming spaces.</p>
+            </div>
+
+            <!-- Two Large Prominent QR Cards -->
+            <div class="qr-cards-container">
+              
+              <!-- Instagram QR Card -->
+              <div class="qr-channel-card">
+                <div class="qr-channel-badge instagram-badge">INSTAGRAM</div>
+                <div class="qr-image-frame">
+                  <img src="assets/qrs/insta_qr_cropped.png" alt="Rahat Instagram QR Code" class="qr-img">
+                </div>
+                <div class="qr-channel-handle">@RAHAT.MAHEBLR</div>
+                <div class="qr-channel-desc">Stories, Events & Daily Moments</div>
+              </div>
+
+              <!-- LinkedIn / Community QR Card -->
+              <div class="qr-channel-card">
+                <div class="qr-channel-badge community-badge">COMMUNITY & LINKEDIN</div>
+                <div class="qr-image-frame linkedin-frame">
+                  <img src="assets/qrs/linkedin_qr_cropped.png" alt="Rahat LinkedIn & Community QR Code" class="qr-img">
+                </div>
+                <div class="qr-channel-handle">RAHAT MIT BENGALURU</div>
+                <div class="qr-channel-desc">Professional Network & Impact</div>
+              </div>
+
+            </div>
+
+            <div class="qr-footer-whisper">
+              <span>SCAN ANYTIME • MAKING SPACE TOGETHER</span>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==========================================
+             SLIDE 09 — THE HORIZON (EXTRA GIANT CLOSING LOGO & MOSAIC - LAST SLIDE)
+             ========================================== -->
+        <section class="slide slide-09 theme-ivory" data-chapter="ACT VI — WHAT COMES NEXT" data-index="9">
+          <div class="slide-inner horizon-layout">
+            <!-- Left Hero Identity with Extra Giant Logo -->
+            <div class="horizon-left-content">
+              <div class="final-logo-frame-giant">
+                <img src="assets/logos/rahat_logo.jpeg" alt="Rahat Official Logo" class="official-logo-img">
+              </div>
+
+              <h1 class="horizon-brand-title">RAHAT</h1>
+              <div class="horizon-future-line">AND THIS IS ONLY THE BEGINNING.</div>
+              
+              <div class="horizon-timeline-large">
+                <span class="time-chip">2023</span>
+                <span class="time-sep">→</span>
+                <span class="time-chip">2026</span>
+                <span class="time-sep">→</span>
+                <span class="time-chip future">?</span>
+              </div>
+
+              <p class="horizon-promises">
+                More conversations. More stories. More spaces. More people.
+              </p>
+              
+              <div class="horizon-closing-whisper">
+                Rahat to all.
+              </div>
+            </div>
+
+            <!-- Right Expansive Photographic Mosaic (Clean & Rendered Properly) -->
+            <div class="horizon-mosaic-gallery">
+              <div class="mosaic-cell cell-1">
+                <img src="assets/04_MANOVRITTI/manovritti_group_photo.jpeg" alt="Manovritti Community" class="editorial-img">
+              </div>
+              <div class="mosaic-cell cell-2">
+                <img src="assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg" alt="Feelings Board" class="editorial-img">
+              </div>
+              <div class="mosaic-cell cell-3">
+                <img src="assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_collage_02.jpeg" alt="Techsolstice Activity" class="editorial-img">
+              </div>
+              <div class="mosaic-cell cell-4">
+                <img src="assets/09_AUDITORIUM_SCREENING/event_writing_frame.png" alt="Screening writing" class="editorial-img">
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Bottom Navigation Bar / Controls Overlay -->
+    <footer class="deck-footer">
+      <div class="footer-left">
+        <button id="btn-prev" class="nav-arrow-btn" title="Previous Slide (← / PageUp)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+          <span>PREV</span>
+        </button>
+      </div>
+
+      <div class="footer-center">
+        <!-- Progress Bar -->
+        <div class="deck-progress-track" id="progress-track" title="Click anywhere to seek">
+          <div class="deck-progress-fill" id="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="footer-right">
+        <button id="btn-next" class="nav-arrow-btn primary" title="Next Slide (→ / Space / PageDown)">
+          <span>NEXT</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Slide Index Tray Modal (Tab / Grid) -->
+    <div class="slide-tray-modal" id="slide-tray">
+      <div class="tray-backdrop" id="tray-backdrop"></div>
+      <div class="tray-container">
+        <div class="tray-header">
+          <div class="tray-title-block">
+            <span class="tray-eyebrow">RAHAT INAUGURAL STORYBOARD</span>
+            <h3 class="tray-title">Slide Index</h3>
+          </div>
+          <button id="btn-close-tray" class="tray-close-btn">&times;</button>
+        </div>
+        <div class="tray-grid" id="tray-grid">
+          <!-- Dynamically populated thumbnails -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Keyboard Shortcut Help Dialog (Press ?) -->
+    <div class="shortcuts-dialog" id="shortcuts-dialog">
+      <div class="dialog-card">
+        <h4>Presenter Shortcuts</h4>
+        <ul>
+          <li><kbd>→</kbd> / <kbd>Space</kbd> : Next slide</li>
+          <li><kbd>←</kbd> : Previous slide</li>
+          <li><kbd>F</kbd> : Toggle Fullscreen</li>
+          <li><kbd>Tab</kbd> / <kbd>I</kbd> : Slide Overview Grid</li>
+          <li><kbd>M</kbd> : Toggle Ambient Soundscape</li>
+          <li><kbd>Esc</kbd> : Close Overview / Exit Fullscreen</li>
+        </ul>
+        <button class="dialog-close-btn" id="btn-close-dialog">Got it</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

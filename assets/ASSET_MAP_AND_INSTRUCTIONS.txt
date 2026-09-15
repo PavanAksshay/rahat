@@ -1,0 +1,104 @@
+RAHAT INAUGURATION ASSET PACKAGE
+================================
+
+Purpose
+-------
+This folder contains the real visual assets supplied for the Rahat club inauguration presentation.
+Rahat is a student-led club and media house at Manipal Institute of Technology, Bengaluru, focused on mental well-being.
+Established 2023.
+
+IMPORTANT INSTRUCTIONS FOR ANTIGRAVITY
+--------------------------------------
+1. Use the supplied real photographs/videos as the primary visual material.
+2. Do NOT replace them with stock photos or AI-generated people/events.
+3. Preserve the authenticity of the photographs; do not heavily retouch faces.
+4. Use the official logo in 00_LOGO exactly as supplied. Do not redraw or modify it.
+5. Video files are in 11_VIDEOS. Several are vertical. Never stretch them horizontally.
+6. The folder names indicate the event/context and should be used to select assets.
+7. Do not randomly mix event-specific assets unless the storyboard calls for a montage.
+8. Do not invent statistics, testimonials, collaborations or event details.
+
+RECOMMENDED STORY / SLIDE MAPPING
+---------------------------------
+01 Opening: 00_LOGO + optional short atmospheric video from 11_VIDEOS
+02 The Question: 08_RAHAT_BOOTH_OUTREACH or other candid human image
+03 What is Rahat?: 00_LOGO + one authentic Rahat image
+04 Making Space to Express: 02_GRATITUDE_FEELINGS
+05 Making Space to Let Go: 03_MEMORY_BOX
+06 Making Space to Create: 04_MANOVRITTI
+07 Making Space to Play: 06_GAMES_TREASURE_HUNT + selected 05_TECHSOLSTICE_NEXUS assets
+08 Rahat Gets Loud: 07_THREADS_OF_MYSTERY + relevant video
+09 Scale: 09_AUDITORIUM_SCREENING + video_02 or video_03
+10 The Room: 09_AUDITORIUM_SCREENING + audience footage
+11 The People: 04_MANOVRITTI/ manovritti_group_photo.jpeg or strongest group image
+12 A Conversation Can Start Anywhere: 08_RAHAT_BOOTH_OUTREACH + booth video
+13 We Take the Conversation With Us: 05_TECHSOLSTICE_NEXUS
+14 Every Feeling Is OK: 02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg
+15 What Rahat Means: cross-event montage using the strongest real images
+16 The Next Chapter: selected strongest images across folders
+17 Final Frame: 00_LOGO
+
+VIDEO QUICK REFERENCE
+----------------------
+video_01_black_white_interaction.mp4
+- 7.98 seconds
+- 352x336, landscape/square-ish
+- Black-and-white interaction/event material
+- Good as a documentary transition or interaction insert
+
+video_02_audience_wide.mp4
+- 13.44 seconds
+- 592x480
+- Wide audience/event footage
+- Best candidate for the 700+ / packed-house sequence
+
+video_03_auditorium_screen_vertical.mov
+- 15.79 seconds
+- 478x850 vertical
+- Auditorium/screening atmosphere
+- Use as intentional vertical video; never stretch
+
+video_04_booth_interaction_vertical.mov
+- 7.23 seconds
+- 464x832 vertical
+- Rahat booth / student interaction material
+- Good for outreach/conversation section
+
+video_05_audience_event_vertical.mov
+- 4.47 seconds
+- 478x850 vertical
+- Vertical audience/event atmosphere
+- Good as a short cinematic insert
+
+video_06_event_vertical.mov
+- 3.51 seconds
+- 478x850 vertical
+- Short vertical event footage
+- Use only if it adds visual variety; do not force it into the deck
+
+DESIGN DIRECTION
+----------------
+Core concept: RAHAT — MAKING SPACE
+
+The presentation should feel like:
+- premium editorial design
+- documentary storytelling
+- cinematic event recap
+- human and emotionally intelligent
+
+It should NOT feel like:
+- generic college-club PowerPoint
+- corporate annual report
+- Canva template
+- clinical mental-health presentation
+
+Suggested base palette:
+- warm ivory #F7F2EA
+- deep navy/near-black #080D1C
+- Rahat red/pink #E7193F
+
+Use restrained accents of dusty pink, lavender, pale blue, beige and occasional yellow from the real photos.
+
+Typography: elegant high-contrast serif for major statements + clean sans-serif for supporting information.
+
+Prefer full-bleed photos, asymmetric editorial layouts, large typography, overlaps and generous negative space. Avoid repetitive 2x2 grids, excessive rounded cards, generic icons, gradients, 3D objects and cliché mental-health imagery.
