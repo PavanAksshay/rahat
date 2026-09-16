@@ -568,9 +568,148 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   SLIDE 04 — WHAT WE'VE DONE (CREATING SPACE - FULL SPAN)
+   SLIDE 03 — WHY JOIN RAHAT (A SPACE FOR EVERYONE)
    -------------------------------------------------------------------------- */
-.full-gallery-layout {
+.why-join-layout {
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  padding: 0.8rem 2rem 0.9rem 2rem !important;
+}
+
+.why-join-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-bottom: 1px solid rgba(8, 13, 28, 0.1);
+  padding-bottom: 0.35rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+}
+
+.why-join-title {
+  font-family: var(--font-serif-display);
+  font-size: clamp(2rem, 3vw, 2.7rem);
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-navy-deep);
+}
+
+.why-join-lead {
+  font-family: var(--font-serif-editorial);
+  font-style: italic;
+  font-size: 1.05rem;
+  color: rgba(8, 13, 28, 0.7);
+  max-width: 550px;
+  text-align: right;
+  line-height: 1.35;
+}
+
+.why-join-body-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 1.5rem;
+  flex: 1;
+  min-height: 0;
+  margin-bottom: 0.6rem;
+}
+
+.why-join-cards-stack {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.85rem;
+  height: 100%;
+}
+
+.why-card {
+  background: #fff;
+  border: 1px solid rgba(8, 13, 28, 0.08);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(8, 13, 28, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-rahat-red);
+}
+
+.why-card.highlight-card {
+  border-left: 4px solid var(--color-rahat-red);
+}
+
+.why-card-icon {
+  font-family: var(--font-serif-editorial);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-rahat-red);
+  margin-bottom: 0.35rem;
+}
+
+.why-card-title {
+  font-size: 1.05rem;
+  letter-spacing: 0.05em;
+  font-weight: 800;
+  color: var(--color-navy-deep);
+  margin-bottom: 0.35rem;
+}
+
+.why-card-desc {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(8, 13, 28, 0.75);
+}
+
+.why-join-visual-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  height: 100%;
+}
+
+.why-img-frame {
+  position: relative;
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(8, 13, 28, 0.12);
+  min-height: 0;
+}
+
+.why-img-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem 0.85rem;
+  background: linear-gradient(to top, rgba(8, 13, 28, 0.85) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+}
+
+.why-join-footer-bar {
+  background: var(--color-navy-deep);
+  color: var(--color-ivory);
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   SLIDE 05 — WHAT WE'VE DONE (CREATING SPACE - CLEAN 3-CARD SHOWCASE)
+   -------------------------------------------------------------------------- */
+.past-initiatives-clean-layout {
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
@@ -610,34 +749,83 @@ html, body {
   font-weight: 700;
 }
 
-.gallery-immersive-grid {
+.past-showcase-grid-3 {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
   flex: 1;
-  height: calc(100% - 55px);
-  gap: 1rem;
   width: 100%;
+  height: calc(100% - 55px);
   min-height: 0;
 }
 
-.past-initiatives-grid {
-  grid-template-columns: 1.35fr 1.1fr 0.85fr 0.85fr 0.85fr;
-}
-
-.grid-panel {
-  position: relative;
-  border-radius: 8px;
+.past-card-item {
+  background: #fff;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(8, 13, 28, 0.12);
-  transition: transform 0.4s ease;
+  box-shadow: 0 16px 45px rgba(8, 13, 28, 0.09);
+  border: 1px solid rgba(8, 13, 28, 0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
 
-.grid-panel:hover {
+.past-card-item:hover {
   transform: translateY(-4px);
+  box-shadow: 0 22px 55px rgba(8, 13, 28, 0.16);
+}
+
+.past-card-img-wrap {
+  width: 100%;
+  height: 60%;
+  position: relative;
+  overflow: hidden;
+  background: #f0ebe1;
+}
+
+.past-card-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+}
+
+.past-card-meta {
+  padding: 0.95rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+}
+
+.past-meta-badge {
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  font-weight: 800;
+  color: var(--color-rahat-red);
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+
+.past-meta-title {
+  font-family: var(--font-serif-display);
+  font-size: 1.45rem;
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--color-navy-deep);
+  margin-bottom: 0.3rem;
+}
+
+.past-meta-desc {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: rgba(8, 13, 28, 0.7);
 }
 
 /* --------------------------------------------------------------------------
-   SLIDE 05 — WHAT COMES NEXT (LARGE IMAGES & LARGE TEXT - FULL SPAN)
+   SLIDE 06 — WHAT COMES NEXT (LARGE IMAGES & COMPLETELY VISIBLE)
    -------------------------------------------------------------------------- */
 .future-redesigned-layout {
   display: grid;
@@ -678,23 +866,41 @@ html, body {
   color: var(--color-rahat-red);
 }
 
-.future-big-gallery {
+.future-clean-two-gallery {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 0.9rem;
-  height: 410px;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  flex: 1;
+  min-height: 0;
   margin-bottom: 0.85rem;
 }
 
-.big-gal-item {
+.future-img-box {
+  position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 10px 28px rgba(8, 13, 28, 0.1);
+  box-shadow: 0 12px 35px rgba(8, 13, 28, 0.1);
+  height: 100%;
 }
 
-.gal-item-1 {
-  grid-row: span 2;
+.future-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.future-box-tag {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.45rem 0.75rem;
+  background: linear-gradient(to top, rgba(8, 13, 28, 0.85) 0%, transparent 100%);
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  font-weight: 800;
 }
 
 .progression-pill-bar {
@@ -956,6 +1162,10 @@ html, body {
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.tanvi-portrait {
+  object-position: center 22% !important;
 }
 
 .pavan-portrait {

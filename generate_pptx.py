@@ -107,7 +107,7 @@ def build_presentation():
     set_slide_background(s2, COLOR_IVORY)
     add_eyebrow(s2, "Act I — Making Space", Inches(0.8), Inches(0.45))
     
-    # Left Visuals (2 photos from booth outreach & classroom)
+    # Left Visuals (2 distinct photos: booth students & classroom talk)
     if os.path.exists('assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_01.jpeg'):
         s2.shapes.add_picture('assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_01.jpeg', Inches(0.8), Inches(1.0), width=Inches(3.6), height=Inches(5.8))
     if os.path.exists('assets/08_RAHAT_BOOTH_OUTREACH/classroom_talk.jpeg'):
@@ -148,14 +148,79 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
 
     # =========================================================================
-    # SLIDE 03: RAHAT — THE EVOLUTION (GIANT LOGOS)
+    # SLIDE 03: WHY JOIN RAHAT (NEW SLIDE AFTER SLIDE 2)
     # =========================================================================
     s3 = prs.slides.add_slide(blank_layout)
     set_slide_background(s3, COLOR_IVORY)
-    add_eyebrow(s3, "Act II — Evolution of Identity", Inches(0.8), Inches(0.4))
+    add_eyebrow(s3, "Act I — Purpose & Community", Inches(0.8), Inches(0.4))
 
-    tf_s3_h = create_textbox(s3, Inches(0.8), Inches(0.75), Inches(11.7), Inches(0.55))
-    p = tf_s3_h.paragraphs[0]
+    tf_why_h = create_textbox(s3, Inches(0.8), Inches(0.72), Inches(11.7), Inches(0.6))
+    p = tf_why_h.paragraphs[0]
+    p.text = "WHY JOIN RAHAT?"
+    p.font.name = FONT_SERIF
+    p.font.size = Pt(24)
+    p.font.bold = True
+    p.font.color.rgb = COLOR_NAVY_DEEP
+
+    # 4 Pillar Cards on the left (2x2 grid)
+    why_points = [
+        ("01", "A Judgement-Free Sanctuary", "No expectations or burnout pressure. A comforting campus haven where you can decompress, share, and be yourself."),
+        ("02", "Creative & Media Expression", "Channel your voice through film screenings, podcast production, visual design, and storytelling that sparks empathy."),
+        ("03", "Hands-On Campus Leadership", "Gain real-world experience organizing 700+ attendee flagship events, interactive workshops, and carnivals."),
+        ("04", "Deep & Lifelong Bonds", "Connect with thoughtful, warm peers across batches who listen without judgment and make wellness a priority.")
+    ]
+
+    for idx, (num, title, desc) in enumerate(why_points):
+        row = idx // 2
+        col = idx % 2
+        card_x = Inches(0.8 + col * 3.4)
+        card_y = Inches(1.4 + row * 2.45)
+        
+        card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, card_x, card_y, Inches(3.25), Inches(2.3))
+        card.fill.solid()
+        card.fill.fore_color.rgb = COLOR_WHITE
+        card.line.color.rgb = COLOR_BORDER_LIGHT if idx != 3 else COLOR_RAHAT_RED
+        
+        tf_card = create_textbox(s3, card_x + Inches(0.15), card_y + Inches(0.15), Inches(2.95), Inches(2.0))
+        p = tf_card.paragraphs[0]
+        p.text = f"{num}  •  {title}"
+        p.font.name = FONT_SANS
+        p.font.size = Pt(11)
+        p.font.bold = True
+        p.font.color.rgb = COLOR_RAHAT_RED if idx == 3 else COLOR_NAVY_DEEP
+        p.space_after = Pt(6)
+
+        p2 = tf_card.add_paragraph()
+        p2.text = desc
+        p2.font.name = FONT_SANS
+        p2.font.size = Pt(9.5)
+        p2.font.color.rgb = COLOR_MUTED_TEXT
+
+    # 2 Unused Visuals on the Right
+    if os.path.exists('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg'):
+        s3.shapes.add_picture('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg', Inches(7.8), Inches(1.4), width=Inches(4.7), height=Inches(2.3))
+    if os.path.exists('assets/08_RAHAT_BOOTH_OUTREACH/post_it_wall_activity.jpeg'):
+        s3.shapes.add_picture('assets/08_RAHAT_BOOTH_OUTREACH/post_it_wall_activity.jpeg', Inches(7.8), Inches(3.85), width=Inches(4.7), height=Inches(2.3))
+
+    # Bottom Whisper
+    tf_why_f = create_textbox(s3, Inches(0.8), Inches(6.45), Inches(11.7), Inches(0.5))
+    p = tf_why_f.paragraphs[0]
+    p.text = "“YOU DON’T JUST JOIN A CLUB — YOU HELP BUILD A SPACE WHERE EVERYONE CAN BREATHE.”"
+    p.font.name = FONT_SANS
+    p.font.size = Pt(10)
+    p.font.bold = True
+    p.alignment = PP_ALIGN.CENTER
+    p.font.color.rgb = COLOR_RAHAT_RED
+
+    # =========================================================================
+    # SLIDE 04: RAHAT — THE EVOLUTION (GIANT LOGOS)
+    # =========================================================================
+    s4 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s4, COLOR_IVORY)
+    add_eyebrow(s4, "Act II — Evolution of Identity", Inches(0.8), Inches(0.4))
+
+    tf_s4_h = create_textbox(s4, Inches(0.8), Inches(0.75), Inches(11.7), Inches(0.55))
+    p = tf_s4_h.paragraphs[0]
     p.text = "FROM WHERE WE STARTED  ➔  TO WHERE WE ARE GOING"
     p.font.name = FONT_SERIF
     p.font.size = Pt(24)
@@ -163,12 +228,12 @@ def build_presentation():
     p.font.color.rgb = COLOR_NAVY_DEEP
 
     # Left Card: Old Logo (Huge)
-    card_old = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.4), Inches(5.1), Inches(4.5))
+    card_old = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(1.4), Inches(5.1), Inches(4.5))
     card_old.fill.solid()
     card_old.fill.fore_color.rgb = COLOR_WHITE
     card_old.line.color.rgb = COLOR_BORDER_LIGHT
     
-    tf_o_tag = create_textbox(s3, Inches(0.8), Inches(1.5), Inches(5.1), Inches(0.35))
+    tf_o_tag = create_textbox(s4, Inches(0.8), Inches(1.5), Inches(5.1), Inches(0.35))
     p = tf_o_tag.paragraphs[0]
     p.text = "THEN  •  THE FOUNDATION (ESTD. 2023)"
     p.font.name = FONT_SANS
@@ -178,9 +243,9 @@ def build_presentation():
     p.font.color.rgb = COLOR_MUTED_TEXT
 
     if os.path.exists('assets/logos/rahat_old_logo.jpeg'):
-        s3.shapes.add_picture('assets/logos/rahat_old_logo.jpeg', Inches(1.6), Inches(1.9), width=Inches(3.5), height=Inches(3.5))
+        s4.shapes.add_picture('assets/logos/rahat_old_logo.jpeg', Inches(1.6), Inches(1.9), width=Inches(3.5), height=Inches(3.5))
     
-    tf_o_b = create_textbox(s3, Inches(0.8), Inches(5.5), Inches(5.1), Inches(0.35))
+    tf_o_b = create_textbox(s4, Inches(0.8), Inches(5.5), Inches(5.1), Inches(0.35))
     p = tf_o_b.paragraphs[0]
     p.text = "STUDENT WELL-BEING COMMUNITY"
     p.font.name = FONT_SANS
@@ -190,7 +255,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_NAVY_DEEP
 
     # Center Bridge Arrow
-    tf_bridge = create_textbox(s3, Inches(5.9), Inches(3.0), Inches(1.5), Inches(1.2))
+    tf_bridge = create_textbox(s4, Inches(5.9), Inches(3.0), Inches(1.5), Inches(1.2))
     p = tf_bridge.paragraphs[0]
     p.text = "➔"
     p.font.name = FONT_SANS
@@ -206,12 +271,12 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
 
     # Right Card: New Logo (Huge)
-    card_new = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.433), Inches(1.4), Inches(5.1), Inches(4.5))
+    card_new = s4.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.433), Inches(1.4), Inches(5.1), Inches(4.5))
     card_new.fill.solid()
     card_new.fill.fore_color.rgb = COLOR_WHITE
     card_new.line.color.rgb = COLOR_RAHAT_RED
     
-    tf_n_tag = create_textbox(s3, Inches(7.433), Inches(1.5), Inches(5.1), Inches(0.35))
+    tf_n_tag = create_textbox(s4, Inches(7.433), Inches(1.5), Inches(5.1), Inches(0.35))
     p = tf_n_tag.paragraphs[0]
     p.text = "NOW  •  THE NEW CHAPTER"
     p.font.name = FONT_SANS
@@ -221,9 +286,9 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
 
     if os.path.exists('assets/logos/rahat_logo.jpeg'):
-        s3.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(8.233), Inches(1.9), width=Inches(3.5), height=Inches(3.5))
+        s4.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(8.233), Inches(1.9), width=Inches(3.5), height=Inches(3.5))
 
-    tf_n_b = create_textbox(s3, Inches(7.433), Inches(5.5), Inches(5.1), Inches(0.35))
+    tf_n_b = create_textbox(s4, Inches(7.433), Inches(5.5), Inches(5.1), Inches(0.35))
     p = tf_n_b.paragraphs[0]
     p.text = "STUDENT CLUB & MEDIA HOUSE"
     p.font.name = FONT_SANS
@@ -233,15 +298,15 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
 
     # Manifesto Footer
-    tf_s3_f = create_textbox(s3, Inches(0.8), Inches(6.05), Inches(11.7), Inches(1.1))
-    p = tf_s3_f.paragraphs[0]
+    tf_s4_f = create_textbox(s4, Inches(0.8), Inches(6.05), Inches(11.7), Inches(1.1))
+    p = tf_s4_f.paragraphs[0]
     p.text = "“Same purpose. A wider canvas.”"
     p.font.name = FONT_SERIF
     p.font.size = Pt(19)
     p.font.bold = True
     p.alignment = PP_ALIGN.CENTER
     p.font.color.rgb = COLOR_NAVY_DEEP
-    p = tf_s3_f.add_paragraph()
+    p = tf_s4_f.add_paragraph()
     p.text = "From a student-led mental well-being community to a space for conversations, creativity, connection and stories that matter."
     p.font.name = FONT_SERIF
     p.font.size = Pt(13)
@@ -250,61 +315,80 @@ def build_presentation():
     p.font.color.rgb = COLOR_MUTED_TEXT
 
     # =========================================================================
-    # SLIDE 04: WHAT WE'VE DONE (CREATING SPACE - 5 EVENT PHOTOS)
+    # SLIDE 05: WHAT WE'VE DONE (PAST INITIATIVES - 3 CLEAN UNCLUTTERED CARDS)
     # =========================================================================
-    s4 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s4, COLOR_IVORY)
-    add_eyebrow(s4, "Act II — What We Have Built", Inches(0.8), Inches(0.4))
+    s5 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s5, COLOR_IVORY)
+    add_eyebrow(s5, "Act II — What We Have Built", Inches(0.8), Inches(0.4))
     
-    tf_s4_h = create_textbox(s4, Inches(0.8), Inches(0.72), Inches(11.7), Inches(0.5))
-    p = tf_s4_h.paragraphs[0]
+    tf_s5_h = create_textbox(s5, Inches(0.8), Inches(0.72), Inches(11.7), Inches(0.5))
+    p = tf_s5_h.paragraphs[0]
     p.text = "“We started by creating space for expression, creativity and play.”"
     p.font.name = FONT_SERIF
     p.font.size = Pt(22)
     p.font.bold = True
     p.font.color.rgb = COLOR_NAVY_DEEP
 
-    pics_s4 = [
-        ('assets/08_RAHAT_BOOTH_OUTREACH/booth_polaroids_table.jpeg', 'POLAROIDS & NOTES'),
-        ('assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg', 'FEELINGS BOARD'),
-        ('assets/03_MEMORY_BOX/memory_box_activity.png', 'MEMORY BOX'),
-        ('assets/06_GAMES_TREASURE_HUNT/treasure_hunt_crowd_01.jpeg', 'TREASURE HUNT'),
-        ('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg', 'COMMUNITY SPACE')
+    initiatives_s5 = [
+        ('assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg', 'FEELINGS & GRATITUDE BOARD', 'INTERACTIVE CHECK-IN', 'Open student board giving every emotion a voice on campus without hesitation.'),
+        ('assets/04_MANOVRITTI/manovritti_group_photo.jpeg', 'MANOVRITTI ART WORKSHOP', 'ART & MINDFULNESS', 'Tote bag painting and mindful art circles connecting inner expression to creativity.'),
+        ('assets/03_MEMORY_BOX/memory_box_activity.png', 'THE MEMORY BOX', 'ANONYMOUS REFLECTION', 'A safe space for heartfelt thoughts, shared stories, and unsaid emotions.')
     ]
-    col_w = Inches(2.23)
-    col_gap = Inches(0.14)
-    start_x = Inches(0.8)
-    y_pos = Inches(1.35)
-    h_pos = Inches(5.6)
     
-    for i, (path, tag) in enumerate(pics_s4):
-        x = start_x + i * (col_w + col_gap)
+    card_w = Inches(3.7)
+    card_gap = Inches(0.3)
+    start_x = Inches(0.8)
+    card_y = Inches(1.35)
+    card_h = Inches(5.6)
+    
+    for i, (path, title, badge, desc) in enumerate(initiatives_s5):
+        cx = start_x + i * (card_w + card_gap)
+        
+        card = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, card_y, card_w, card_h)
+        card.fill.solid()
+        card.fill.fore_color.rgb = COLOR_WHITE
+        card.line.color.rgb = COLOR_BORDER_LIGHT
+
         if os.path.exists(path):
-            s4.shapes.add_picture(path, x, y_pos, width=col_w, height=h_pos)
+            s5.shapes.add_picture(path, cx, card_y, width=card_w, height=Inches(3.6))
             
-        tbox = create_textbox(s4, x, y_pos + h_pos - Inches(0.45), col_w, Inches(0.4))
+        tbox = create_textbox(s5, cx + Inches(0.15), card_y + Inches(3.75), card_w - Inches(0.3), Inches(1.7))
         p = tbox.paragraphs[0]
-        p.text = tag
+        p.text = badge
         p.font.name = FONT_SANS
         p.font.size = Pt(9)
         p.font.bold = True
-        p.font.color.rgb = COLOR_WHITE
-        p.alignment = PP_ALIGN.CENTER
+        p.font.color.rgb = COLOR_RAHAT_RED
+        p.space_after = Pt(3)
+
+        p2 = tbox.add_paragraph()
+        p2.text = title
+        p2.font.name = FONT_SERIF
+        p2.font.size = Pt(13)
+        p2.font.bold = True
+        p2.font.color.rgb = COLOR_NAVY_DEEP
+        p2.space_after = Pt(4)
+
+        p3 = tbox.add_paragraph()
+        p3.text = desc
+        p3.font.name = FONT_SANS
+        p3.font.size = Pt(9)
+        p3.font.color.rgb = COLOR_MUTED_TEXT
 
     # =========================================================================
-    # SLIDE 05: WHAT COMES NEXT (EXPANDING THE CANVAS)
+    # SLIDE 06: WHAT COMES NEXT (EXPANDING THE CANVAS - 2 CLEAN VISUALS)
     # =========================================================================
-    s5 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s5, COLOR_IVORY)
-    add_eyebrow(s5, "Act III — The Horizon", Inches(0.8), Inches(0.4))
+    s6 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s6, COLOR_IVORY)
+    add_eyebrow(s6, "Act III — The Horizon", Inches(0.8), Inches(0.4))
 
     # Left Box
-    box_l = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.85), Inches(5.6), Inches(6.1))
+    box_l = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), Inches(0.85), Inches(5.6), Inches(6.1))
     box_l.fill.solid()
     box_l.fill.fore_color.rgb = COLOR_WHITE
     box_l.line.color.rgb = COLOR_BORDER_LIGHT
     
-    tf_l = create_textbox(s5, Inches(1.0), Inches(0.95), Inches(5.2), Inches(0.5))
+    tf_l = create_textbox(s6, Inches(1.0), Inches(0.95), Inches(5.2), Inches(0.5))
     p = tf_l.paragraphs[0]
     p.text = "WE STARTED BY CREATING SPACE"
     p.font.name = FONT_SERIF
@@ -312,20 +396,18 @@ def build_presentation():
     p.font.bold = True
     p.font.color.rgb = COLOR_NAVY_DEEP
 
-    if os.path.exists('assets/04_MANOVRITTI/manovritti_group_photo.jpeg'):
-        s5.shapes.add_picture('assets/04_MANOVRITTI/manovritti_group_photo.jpeg', Inches(1.0), Inches(1.55), width=Inches(3.0), height=Inches(4.6))
-    if os.path.exists('assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg'):
-        s5.shapes.add_picture('assets/02_GRATITUDE_FEELINGS/feelings_board_activity.jpeg', Inches(4.1), Inches(1.55), width=Inches(2.1), height=Inches(2.2))
+    if os.path.exists('assets/04_MANOVRITTI/manovritti_painting_closeup.jpeg'):
+        s6.shapes.add_picture('assets/04_MANOVRITTI/manovritti_painting_closeup.jpeg', Inches(1.0), Inches(1.55), width=Inches(2.55), height=Inches(4.6))
     if os.path.exists('assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_02.jpeg'):
-        s5.shapes.add_picture('assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_02.jpeg', Inches(4.1), Inches(3.9), width=Inches(2.1), height=Inches(2.25))
+        s6.shapes.add_picture('assets/08_RAHAT_BOOTH_OUTREACH/rahat_booth_students_02.jpeg', Inches(3.65), Inches(1.55), width=Inches(2.55), height=Inches(4.6))
 
     # Right Box
-    box_r = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.9), Inches(0.85), Inches(5.6), Inches(6.1))
+    box_r = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.9), Inches(0.85), Inches(5.6), Inches(6.1))
     box_r.fill.solid()
     box_r.fill.fore_color.rgb = COLOR_WHITE
     box_r.line.color.rgb = COLOR_RAHAT_RED
     
-    tf_r = create_textbox(s5, Inches(7.1), Inches(0.95), Inches(5.2), Inches(0.5))
+    tf_r = create_textbox(s6, Inches(7.1), Inches(0.95), Inches(5.2), Inches(0.5))
     p = tf_r.paragraphs[0]
     p.text = "NOW, WE'RE MAKING THE SPACE BIGGER"
     p.font.name = FONT_SERIF
@@ -341,12 +423,12 @@ def build_presentation():
     ]
     
     for j, (num, title, desc) in enumerate(pillars):
-        p_box = s5.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.1), Inches(1.55 + j * 1.2), Inches(5.2), Inches(1.05))
+        p_box = s6.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.1), Inches(1.55 + j * 1.2), Inches(5.2), Inches(1.05))
         p_box.fill.solid()
         p_box.fill.fore_color.rgb = COLOR_IVORY
         p_box.line.color.rgb = COLOR_BORDER_LIGHT
         
-        tf_p = create_textbox(s5, Inches(7.2), Inches(1.6 + j * 1.2), Inches(5.0), Inches(0.95))
+        tf_p = create_textbox(s6, Inches(7.2), Inches(1.6 + j * 1.2), Inches(5.0), Inches(0.95))
         p1 = tf_p.paragraphs[0]
         p1.text = f"{num}  •  {title}"
         p1.font.name = FONT_SANS
@@ -362,15 +444,15 @@ def build_presentation():
         p2.font.color.rgb = COLOR_MUTED_TEXT
 
     # =========================================================================
-    # SLIDE 06: CINEMATIC SCALE (EMBEDDED PLAYABLE VIDEOS)
+    # SLIDE 07: CINEMATIC SCALE (EMBEDDED PLAYABLE VIDEOS)
     # =========================================================================
-    s6 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s6, COLOR_NAVY_DEEP)
-    add_eyebrow(s6, "Act IV — Scale & Momentum", Inches(0.8), Inches(0.4), color=COLOR_RAHAT_RED)
+    s7 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s7, COLOR_NAVY_DEEP)
+    add_eyebrow(s7, "Act IV — Scale & Momentum", Inches(0.8), Inches(0.4), color=COLOR_RAHAT_RED)
 
     # Left Stat Block
-    tf6 = create_textbox(s6, Inches(0.8), Inches(0.9), Inches(4.3), Inches(3.2))
-    p = tf6.paragraphs[0]
+    tf7 = create_textbox(s7, Inches(0.8), Inches(0.9), Inches(4.3), Inches(3.2))
+    p = tf7.paragraphs[0]
     p.text = "700+"
     p.font.name = FONT_SERIF
     p.font.size = Pt(64)
@@ -378,7 +460,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_WHITE
     p.space_after = Pt(2)
     
-    p = tf6.add_paragraph()
+    p = tf7.add_paragraph()
     p.text = "REGISTRATIONS"
     p.font.name = FONT_SANS
     p.font.size = Pt(18)
@@ -386,7 +468,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
     p.space_after = Pt(4)
 
-    p = tf6.add_paragraph()
+    p = tf7.add_paragraph()
     p.text = "ONE PACKED HOUSE"
     p.font.name = FONT_SANS
     p.font.size = Pt(12)
@@ -394,7 +476,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_SUBTLE_GOLD
     p.space_after = Pt(8)
 
-    p = tf6.add_paragraph()
+    p = tf7.add_paragraph()
     p.text = "“A room full of people who showed up, watched, laughed, and shared the moment.”"
     p.font.name = FONT_SERIF
     p.font.size = Pt(13)
@@ -402,88 +484,79 @@ def build_presentation():
     p.font.color.rgb = COLOR_WHITE
 
     if os.path.exists('assets/09_AUDITORIUM_SCREENING/700_plus_registrations_packed_house.png'):
-        s6.shapes.add_picture('assets/09_AUDITORIUM_SCREENING/700_plus_registrations_packed_house.png', Inches(0.8), Inches(4.3), width=Inches(4.3), height=Inches(2.65))
+        s7.shapes.add_picture('assets/09_AUDITORIUM_SCREENING/700_plus_registrations_packed_house.png', Inches(0.8), Inches(4.3), width=Inches(4.3), height=Inches(2.65))
 
     # Right Playable Videos (Embedded MP4 with poster frames)
-    # 1. Wide Video (Top Right / Middle)
     vid_wide = 'assets/11_VIDEOS/video_02_audience_wide.mp4'
     poster_wide = 'assets/video_stills/video_02_audience_wide_still.jpg'
     if os.path.exists(vid_wide):
-        s6.shapes.add_movie(vid_wide, Inches(5.35), Inches(0.9), Inches(4.2), Inches(6.0), poster_frame_image=poster_wide if os.path.exists(poster_wide) else None, mime_type='video/mp4')
+        s7.shapes.add_movie(vid_wide, Inches(5.35), Inches(0.9), Inches(4.2), Inches(6.0), poster_frame_image=poster_wide if os.path.exists(poster_wide) else None, mime_type='video/mp4')
     elif os.path.exists(poster_wide):
-        s6.shapes.add_picture(poster_wide, Inches(5.35), Inches(0.9), width=Inches(4.2), height=Inches(6.0))
+        s7.shapes.add_picture(poster_wide, Inches(5.35), Inches(0.9), width=Inches(4.2), height=Inches(6.0))
 
-    # 2. Vertical Video 03 (Auditorium screen)
     vid_v3 = 'assets/11_VIDEOS/video_03_auditorium_screen_vertical.mp4'
     poster_v3 = 'assets/video_stills/video_03_auditorium_screen_vertical_still.jpg'
     if os.path.exists(vid_v3):
-        s6.shapes.add_movie(vid_v3, Inches(9.7), Inches(0.9), Inches(1.6), Inches(6.0), poster_frame_image=poster_v3 if os.path.exists(poster_v3) else None, mime_type='video/mp4')
+        s7.shapes.add_movie(vid_v3, Inches(9.7), Inches(0.9), Inches(1.6), Inches(6.0), poster_frame_image=poster_v3 if os.path.exists(poster_v3) else None, mime_type='video/mp4')
     elif os.path.exists(poster_v3):
-        s6.shapes.add_picture(poster_v3, Inches(9.7), Inches(0.9), width=Inches(1.6), height=Inches(6.0))
+        s7.shapes.add_picture(poster_v3, Inches(9.7), Inches(0.9), width=Inches(1.6), height=Inches(6.0))
 
-    # 3. Vertical Video 06 (Event & Audience)
     vid_v6 = 'assets/11_VIDEOS/video_06_event_vertical.mp4'
     poster_v6 = 'assets/video_stills/video_06_event_vertical_still.jpg'
     if os.path.exists(vid_v6):
-        s6.shapes.add_movie(vid_v6, Inches(11.45), Inches(0.9), Inches(1.6), Inches(6.0), poster_frame_image=poster_v6 if os.path.exists(poster_v6) else None, mime_type='video/mp4')
+        s7.shapes.add_movie(vid_v6, Inches(11.45), Inches(0.9), Inches(1.6), Inches(6.0), poster_frame_image=poster_v6 if os.path.exists(poster_v6) else None, mime_type='video/mp4')
     elif os.path.exists(poster_v6):
-        s6.shapes.add_picture(poster_v6, Inches(11.45), Inches(0.9), width=Inches(1.6), height=Inches(6.0))
+        s7.shapes.add_picture(poster_v6, Inches(11.45), Inches(0.9), width=Inches(1.6), height=Inches(6.0))
 
     # =========================================================================
-    # SLIDE 07: CORE COMMITTEE (THE PEOPLE BEHIND RAHAT)
+    # SLIDE 08: CORE COMMITTEE (WITH TANVI PRESIDENT PHOTO ADDED)
     # =========================================================================
-    s7 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s7, COLOR_IVORY)
-    add_eyebrow(s7, "Act V — The Leadership", Inches(0.8), Inches(0.35))
+    s8 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s8, COLOR_IVORY)
+    add_eyebrow(s8, "Act V — The Leadership", Inches(0.8), Inches(0.35))
 
-    tf_s7_h = create_textbox(s7, Inches(0.8), Inches(0.65), Inches(11.7), Inches(0.45))
-    p = tf_s7_h.paragraphs[0]
+    tf_s8_h = create_textbox(s8, Inches(0.8), Inches(0.65), Inches(11.7), Inches(0.45))
+    p = tf_s8_h.paragraphs[0]
     p.text = "THE PEOPLE BEHIND RAHAT"
     p.font.name = FONT_SERIF
     p.font.size = Pt(22)
     p.font.bold = True
     p.font.color.rgb = COLOR_NAVY_DEEP
 
-    # Top Row: President & Vice President
+    # Top Row: President (Tanvi) & Vice President (Pavan)
     # Tanvi (President)
-    card_p1 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.2), Inches(1.15), Inches(3.3), Inches(2.75))
+    card_p1 = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(3.2), Inches(1.15), Inches(3.3), Inches(2.75))
     card_p1.fill.solid()
     card_p1.fill.fore_color.rgb = COLOR_WHITE
     card_p1.line.color.rgb = COLOR_BORDER_LIGHT
 
-    tf_p1 = create_textbox(s7, Inches(3.3), Inches(1.25), Inches(3.1), Inches(2.55))
+    if os.path.exists('assets/committee/tanvi_pic.jpeg'):
+        s8.shapes.add_picture('assets/committee/tanvi_pic.jpeg', Inches(3.35), Inches(1.25), width=Inches(1.3), height=Inches(1.8))
+
+    tf_p1 = create_textbox(s8, Inches(4.75), Inches(1.45), Inches(1.65), Inches(1.6))
     p = tf_p1.paragraphs[0]
     p.text = "TANVI"
     p.font.name = FONT_SERIF
     p.font.size = Pt(18)
     p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
     p.font.color.rgb = COLOR_NAVY_DEEP
     p = tf_p1.add_paragraph()
     p.text = "PRESIDENT"
     p.font.name = FONT_SANS
     p.font.size = Pt(11)
     p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
     p.font.color.rgb = COLOR_RAHAT_RED
-    p.space_after = Pt(6)
-    p = tf_p1.add_paragraph()
-    p.text = "Executive Leadership & Community Vision"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(10)
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_MUTED_TEXT
 
     # Pavan (Vice President)
-    card_p2 = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.833), Inches(1.15), Inches(3.3), Inches(2.75))
+    card_p2 = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(6.833), Inches(1.15), Inches(3.3), Inches(2.75))
     card_p2.fill.solid()
     card_p2.fill.fore_color.rgb = COLOR_WHITE
     card_p2.line.color.rgb = COLOR_BORDER_LIGHT
 
     if os.path.exists('assets/committee/pavan_pic.jpeg'):
-        s7.shapes.add_picture('assets/committee/pavan_pic.jpeg', Inches(7.0), Inches(1.25), width=Inches(1.3), height=Inches(1.8))
+        s8.shapes.add_picture('assets/committee/pavan_pic.jpeg', Inches(7.0), Inches(1.25), width=Inches(1.3), height=Inches(1.8))
 
-    tf_p2 = create_textbox(s7, Inches(8.4), Inches(1.45), Inches(1.65), Inches(1.6))
+    tf_p2 = create_textbox(s8, Inches(8.4), Inches(1.45), Inches(1.65), Inches(1.6))
     p = tf_p2.paragraphs[0]
     p.text = "PAVAN"
     p.font.name = FONT_SERIF
@@ -512,15 +585,15 @@ def build_presentation():
     
     for k, (img_path, name, role) in enumerate(bottom_leads):
         bx = b_start_x + k * (b_w + b_gap)
-        lead_card = s7.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, bx, b_y, b_w, Inches(3.0))
+        lead_card = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, bx, b_y, b_w, Inches(3.0))
         lead_card.fill.solid()
         lead_card.fill.fore_color.rgb = COLOR_WHITE
         lead_card.line.color.rgb = COLOR_BORDER_LIGHT
 
         if os.path.exists(img_path):
-            s7.shapes.add_picture(img_path, bx + Inches(0.2), b_y + Inches(0.15), width=Inches(1.83), height=Inches(2.0))
+            s8.shapes.add_picture(img_path, bx + Inches(0.2), b_y + Inches(0.15), width=Inches(1.83), height=Inches(2.0))
 
-        tf_l_info = create_textbox(s7, bx, b_y + Inches(2.2), b_w, Inches(0.75))
+        tf_l_info = create_textbox(s8, bx, b_y + Inches(2.2), b_w, Inches(0.75))
         p = tf_l_info.paragraphs[0]
         p.text = name
         p.font.name = FONT_SERIF
@@ -537,14 +610,14 @@ def build_presentation():
         p.font.color.rgb = COLOR_RAHAT_RED
 
     # =========================================================================
-    # SLIDE 08: CONNECT & JOIN US (HUGE QR CODES)
+    # SLIDE 09: CONNECT & JOIN US (HUGE QR CODES)
     # =========================================================================
-    s8 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s8, COLOR_IVORY)
-    add_eyebrow(s8, "Act VI — Connect With Us", Inches(0.8), Inches(0.45))
+    s9 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s9, COLOR_IVORY)
+    add_eyebrow(s9, "Act VI — Connect With Us", Inches(0.8), Inches(0.45))
 
-    tf_s8_h = create_textbox(s8, Inches(0.8), Inches(0.8), Inches(11.7), Inches(0.55))
-    p = tf_s8_h.paragraphs[0]
+    tf_s9_h = create_textbox(s9, Inches(0.8), Inches(0.8), Inches(11.7), Inches(0.55))
+    p = tf_s9_h.paragraphs[0]
     p.text = "BE A PART OF THE CONVERSATION"
     p.font.name = FONT_SERIF
     p.font.size = Pt(26)
@@ -552,15 +625,15 @@ def build_presentation():
     p.font.color.rgb = COLOR_NAVY_DEEP
 
     # Instagram Card (Left - Huge QR)
-    card_insta = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(1.5), Inches(5.0), Inches(5.3))
+    card_insta = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(1.5), Inches(5.0), Inches(5.3))
     card_insta.fill.solid()
     card_insta.fill.fore_color.rgb = COLOR_WHITE
     card_insta.line.color.rgb = COLOR_BORDER_LIGHT
 
     if os.path.exists('assets/qrs/insta_qr_cropped.png'):
-        s8.shapes.add_picture('assets/qrs/insta_qr_cropped.png', Inches(2.0), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
+        s9.shapes.add_picture('assets/qrs/insta_qr_cropped.png', Inches(2.0), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
 
-    tf_insta = create_textbox(s8, Inches(1.2), Inches(5.25), Inches(5.0), Inches(1.4))
+    tf_insta = create_textbox(s9, Inches(1.2), Inches(5.25), Inches(5.0), Inches(1.4))
     p = tf_insta.paragraphs[0]
     p.text = "INSTAGRAM"
     p.font.name = FONT_SANS
@@ -583,15 +656,15 @@ def build_presentation():
     p.font.color.rgb = COLOR_MUTED_TEXT
 
     # LinkedIn Card (Right - Huge QR)
-    card_link = s8.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.133), Inches(1.5), Inches(5.0), Inches(5.3))
+    card_link = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.133), Inches(1.5), Inches(5.0), Inches(5.3))
     card_link.fill.solid()
     card_link.fill.fore_color.rgb = COLOR_WHITE
     card_link.line.color.rgb = COLOR_BORDER_LIGHT
 
     if os.path.exists('assets/qrs/linkedin_qr_cropped.png'):
-        s8.shapes.add_picture('assets/qrs/linkedin_qr_cropped.png', Inches(7.933), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
+        s9.shapes.add_picture('assets/qrs/linkedin_qr_cropped.png', Inches(7.933), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
 
-    tf_link = create_textbox(s8, Inches(7.133), Inches(5.25), Inches(5.0), Inches(1.4))
+    tf_link = create_textbox(s9, Inches(7.133), Inches(5.25), Inches(5.0), Inches(1.4))
     p = tf_link.paragraphs[0]
     p.text = "LINKEDIN"
     p.font.name = FONT_SANS
@@ -614,16 +687,16 @@ def build_presentation():
     p.font.color.rgb = COLOR_MUTED_TEXT
 
     # =========================================================================
-    # SLIDE 09: CLOSING SCREEN
+    # SLIDE 10: CLOSING SCREEN & HORIZON
     # =========================================================================
-    s9 = prs.slides.add_slide(blank_layout)
-    set_slide_background(s9, COLOR_IVORY)
+    s10 = prs.slides.add_slide(blank_layout)
+    set_slide_background(s10, COLOR_IVORY)
 
     if os.path.exists('assets/logos/rahat_logo.jpeg'):
-        s9.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(5.416), Inches(1.0), width=Inches(2.5), height=Inches(2.5))
+        s10.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(5.416), Inches(1.0), width=Inches(2.5), height=Inches(2.5))
 
-    tf9 = create_textbox(s9, Inches(1.0), Inches(3.8), Inches(11.333), Inches(3.2))
-    p = tf9.paragraphs[0]
+    tf10 = create_textbox(s10, Inches(1.0), Inches(3.8), Inches(11.333), Inches(3.2))
+    p = tf10.paragraphs[0]
     p.text = "“MAKING SPACE”"
     p.font.name = FONT_SERIF
     p.font.size = Pt(44)
@@ -632,7 +705,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_NAVY_DEEP
     p.space_after = Pt(8)
 
-    p = tf9.add_paragraph()
+    p = tf10.add_paragraph()
     p.text = "Rahat to all."
     p.font.name = FONT_SERIF
     p.font.size = Pt(26)
@@ -641,7 +714,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
     p.space_after = Pt(14)
 
-    p = tf9.add_paragraph()
+    p = tf10.add_paragraph()
     p.text = "mitbengaluru.rahat@gmail.com  •  MIT Bengaluru"
     p.font.name = FONT_SANS
     p.font.size = Pt(12)

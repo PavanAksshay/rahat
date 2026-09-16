@@ -277,13 +277,14 @@ class PresentationDeck {
     const titles = [
       "01. Rahat — Inauguration & Logo",
       "02. The Premise — Finding Space",
-      "03. Evolution — Then to Now",
-      "04. What We've Done — Creating Space",
-      "05. What Comes Next — Expanding the Canvas",
-      "06. The Scale — 700+ Packed House",
-      "07. Core Committee — Leadership Team",
-      "08. Connect — Community & Instagram QR",
-      "09. Horizon — And This Is Only The Beginning"
+      "03. Why Join Rahat — Purpose & Community",
+      "04. Evolution — Then to Now",
+      "05. What We've Done — Creating Space",
+      "06. What Comes Next — Expanding the Canvas",
+      "07. The Scale — 700+ Packed House",
+      "08. Core Committee — Leadership Team",
+      "09. Connect — Community & Instagram QR",
+      "10. Horizon — And This Is Only The Beginning"
     ];
 
     this.trayGrid.innerHTML = '';
@@ -292,7 +293,7 @@ class PresentationDeck {
       item.className = `tray-thumbnail-item ${idx === 0 ? 'active' : ''}`;
       item.innerHTML = `
         <div class="thumb-preview">SLIDE ${String(idx + 1).padStart(2, '0')}</div>
-        <span class="thumb-num">ACT ${slide.getAttribute('data-chapter').split('—')[0].replace('ACT ', '')}</span>
+        <span class="thumb-num">ACT ${(slide.getAttribute('data-chapter') || '').split('—')[0].replace('ACT ', '')}</span>
         <span class="thumb-title">${titles[idx] || `Slide ${idx + 1}`}</span>
       `;
       item.addEventListener('click', () => {
