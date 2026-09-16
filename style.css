@@ -1335,36 +1335,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   SLIDE 08 — CONNECT & JOIN US (HUGE SCANNABLE QR CARDS)
-   -------------------------------------------------------------------------- */
-.qr-slide-layout {
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  text-align: center;
-  background: radial-gradient(circle at 50% 45%, #ffffff 0%, var(--color-ivory) 80%);
-  width: 100%;
-  height: 100%;
-}
-
-.qr-header-block {
-  max-width: 900px;
-}
-
-.qr-main-title {
-  font-family: var(--font-serif-display);
-  font-size: clamp(2.6rem, 4vw, 3.6rem);
-  font-weight: 400;
-  line-height: 1.1;
-  color: var(--color-navy-deep);
-  margin-bottom: 0.35rem;
-}
-
-.qr-subtitle {
-  font-family: var(--font-serif-editorial);
-  font-style: italic;
-/* --------------------------------------------------------------------------
-   SLIDE 08 — CONNECT & JOIN US (3 BIG SCANNABLE QR CARDS)
+   SLIDE 09 — CONNECT & JOIN US (3 BIG SCANNABLE QR CARDS)
    -------------------------------------------------------------------------- */
 .qr-slide-layout {
   flex-direction: column;
