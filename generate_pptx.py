@@ -148,7 +148,7 @@ def build_presentation():
     p.font.color.rgb = COLOR_RAHAT_RED
 
     # =========================================================================
-    # SLIDE 03: WHY JOIN RAHAT (NEW SLIDE AFTER SLIDE 2)
+    # SLIDE 03: WHY JOIN RAHAT (4 STREAMLINED ROWS & 1 LARGE PROMINENT PHOTO)
     # =========================================================================
     s3 = prs.slides.add_slide(blank_layout)
     set_slide_background(s3, COLOR_IVORY)
@@ -162,33 +162,30 @@ def build_presentation():
     p.font.bold = True
     p.font.color.rgb = COLOR_NAVY_DEEP
 
-    # 4 Pillar Cards on the left (2x2 grid)
+    # 4 Streamlined Horizontal Value Rows on the Left
     why_points = [
-        ("01", "A Judgement-Free Sanctuary", "No expectations or burnout pressure. A comforting campus haven where you can decompress, share, and be yourself."),
-        ("02", "Creative & Media Expression", "Channel your voice through film screenings, podcast production, visual design, and storytelling that sparks empathy."),
-        ("03", "Hands-On Campus Leadership", "Gain real-world experience organizing 700+ attendee flagship events, interactive workshops, and carnivals."),
-        ("04", "Deep & Lifelong Bonds", "Connect with thoughtful, warm peers across batches who listen without judgment and make wellness a priority.")
+        ("01", "A Judgement-Free Sanctuary", "No expectations, hierarchy, or burnout pressure. A comforting haven where you can decompress, share, and be your authentic self."),
+        ("02", "Creative & Media Expression", "Channel your voice through film screenings, podcast production, visual design, creative writing, and digital media that creates social impact."),
+        ("03", "Hands-On Campus Leadership", "Gain real-world experience organizing 700+ attendee flagship events, interactive workshops, open theatre, and vibrant campus carnivals."),
+        ("04", "Deep & Lifelong Bonds", "Connect with thoughtful, warm peers across batches who listen without judgment and make wellness an everyday reality.")
     ]
 
     for idx, (num, title, desc) in enumerate(why_points):
-        row = idx // 2
-        col = idx % 2
-        card_x = Inches(0.8 + col * 3.4)
-        card_y = Inches(1.4 + row * 2.45)
+        row_y = Inches(1.35 + idx * 1.25)
         
-        card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, card_x, card_y, Inches(3.25), Inches(2.3))
+        card = s3.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.8), row_y, Inches(6.5), Inches(1.15))
         card.fill.solid()
         card.fill.fore_color.rgb = COLOR_WHITE
         card.line.color.rgb = COLOR_BORDER_LIGHT if idx != 3 else COLOR_RAHAT_RED
         
-        tf_card = create_textbox(s3, card_x + Inches(0.15), card_y + Inches(0.15), Inches(2.95), Inches(2.0))
+        tf_card = create_textbox(s3, Inches(0.95), row_y + Inches(0.1), Inches(6.2), Inches(0.95))
         p = tf_card.paragraphs[0]
         p.text = f"{num}  •  {title}"
         p.font.name = FONT_SANS
-        p.font.size = Pt(11)
+        p.font.size = Pt(11.5)
         p.font.bold = True
         p.font.color.rgb = COLOR_RAHAT_RED if idx == 3 else COLOR_NAVY_DEEP
-        p.space_after = Pt(6)
+        p.space_after = Pt(2)
 
         p2 = tf_card.add_paragraph()
         p2.text = desc
@@ -196,11 +193,9 @@ def build_presentation():
         p2.font.size = Pt(9.5)
         p2.font.color.rgb = COLOR_MUTED_TEXT
 
-    # 2 Unused Visuals on the Right
+    # 1 Single Large Unclipped Focal Visual on the Right
     if os.path.exists('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg'):
-        s3.shapes.add_picture('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg', Inches(7.8), Inches(1.4), width=Inches(4.7), height=Inches(2.3))
-    if os.path.exists('assets/08_RAHAT_BOOTH_OUTREACH/post_it_wall_activity.jpeg'):
-        s3.shapes.add_picture('assets/08_RAHAT_BOOTH_OUTREACH/post_it_wall_activity.jpeg', Inches(7.8), Inches(3.85), width=Inches(4.7), height=Inches(2.3))
+        s3.shapes.add_picture('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_group_activity.jpeg', Inches(7.55), Inches(1.35), width=Inches(4.95), height=Inches(4.9))
 
     # Bottom Whisper
     tf_why_f = create_textbox(s3, Inches(0.8), Inches(6.45), Inches(11.7), Inches(0.5))
@@ -610,117 +605,146 @@ def build_presentation():
         p.font.color.rgb = COLOR_RAHAT_RED
 
     # =========================================================================
-    # SLIDE 09: CONNECT & JOIN US (HUGE QR CODES)
+    # SLIDE 09: CONNECT & JOIN US (3 BIG QR CARDS: WHATSAPP, INSTA, LINKEDIN)
     # =========================================================================
     s9 = prs.slides.add_slide(blank_layout)
     set_slide_background(s9, COLOR_IVORY)
-    add_eyebrow(s9, "Act VI — Connect With Us", Inches(0.8), Inches(0.45))
+    add_eyebrow(s9, "Act VI — Connect With Us", Inches(0.8), Inches(0.35))
 
-    tf_s9_h = create_textbox(s9, Inches(0.8), Inches(0.8), Inches(11.7), Inches(0.55))
+    tf_s9_h = create_textbox(s9, Inches(0.8), Inches(0.65), Inches(11.7), Inches(0.55))
     p = tf_s9_h.paragraphs[0]
     p.text = "BE A PART OF THE CONVERSATION"
     p.font.name = FONT_SERIF
-    p.font.size = Pt(26)
+    p.font.size = Pt(24)
     p.font.bold = True
     p.font.color.rgb = COLOR_NAVY_DEEP
 
-    # Instagram Card (Left - Huge QR)
-    card_insta = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(1.2), Inches(1.5), Inches(5.0), Inches(5.3))
-    card_insta.fill.solid()
-    card_insta.fill.fore_color.rgb = COLOR_WHITE
-    card_insta.line.color.rgb = COLOR_BORDER_LIGHT
+    qr_items = [
+        ('assets/qrs/whatsapp_qr.png', 'WHATSAPP COMMUNITY', 'RAHAT COMMUNITY', 'Group chats, announcements & safe space', COLOR_RAHAT_RED),
+        ('assets/qrs/insta_qr_cropped.png', 'INSTAGRAM', '@rahat.mitb', 'Follow for stories, event updates & reels', COLOR_RAHAT_RED),
+        ('assets/qrs/linkedin_qr_cropped.png', 'LINKEDIN', 'Rahat MIT Bengaluru', 'Professional network & student leadership', COLOR_NAVY_DEEP)
+    ]
 
-    if os.path.exists('assets/qrs/insta_qr_cropped.png'):
-        s9.shapes.add_picture('assets/qrs/insta_qr_cropped.png', Inches(2.0), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
+    card_w9 = Inches(3.65)
+    gap9 = Inches(0.38)
+    start_x9 = Inches(0.8)
 
-    tf_insta = create_textbox(s9, Inches(1.2), Inches(5.25), Inches(5.0), Inches(1.4))
-    p = tf_insta.paragraphs[0]
-    p.text = "INSTAGRAM"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(14)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_RAHAT_RED
-    p = tf_insta.add_paragraph()
-    p.text = "@rahat.mitb"
-    p.font.name = FONT_SERIF
-    p.font.size = Pt(18)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_NAVY_DEEP
-    p = tf_insta.add_paragraph()
-    p.text = "Follow for stories, event updates, reels & community initiatives"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(10)
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_MUTED_TEXT
+    for q_idx, (qr_path, badge, handle, desc, badge_col) in enumerate(qr_items):
+        cx = start_x9 + q_idx * (card_w9 + gap9)
+        card_q = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, cx, Inches(1.3), card_w9, Inches(5.6))
+        card_q.fill.solid()
+        card_q.fill.fore_color.rgb = COLOR_WHITE
+        card_q.line.color.rgb = COLOR_BORDER_LIGHT
 
-    # LinkedIn Card (Right - Huge QR)
-    card_link = s9.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, Inches(7.133), Inches(1.5), Inches(5.0), Inches(5.3))
-    card_link.fill.solid()
-    card_link.fill.fore_color.rgb = COLOR_WHITE
-    card_link.line.color.rgb = COLOR_BORDER_LIGHT
+        # Badge
+        tf_b = create_textbox(s9, cx, Inches(1.45), card_w9, Inches(0.35))
+        p = tf_b.paragraphs[0]
+        p.text = badge
+        p.font.name = FONT_SANS
+        p.font.size = Pt(10)
+        p.font.bold = True
+        p.alignment = PP_ALIGN.CENTER
+        p.font.color.rgb = badge_col
 
-    if os.path.exists('assets/qrs/linkedin_qr_cropped.png'):
-        s9.shapes.add_picture('assets/qrs/linkedin_qr_cropped.png', Inches(7.933), Inches(1.75), width=Inches(3.4), height=Inches(3.4))
+        # Large QR
+        if os.path.exists(qr_path):
+            s9.shapes.add_picture(qr_path, cx + Inches(0.525), Inches(1.9), width=Inches(2.6), height=Inches(2.6))
 
-    tf_link = create_textbox(s9, Inches(7.133), Inches(5.25), Inches(5.0), Inches(1.4))
-    p = tf_link.paragraphs[0]
-    p.text = "LINKEDIN"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(14)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_RAHAT_RED
-    p = tf_link.add_paragraph()
-    p.text = "Rahat MIT Bengaluru"
-    p.font.name = FONT_SERIF
-    p.font.size = Pt(18)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_NAVY_DEEP
-    p = tf_link.add_paragraph()
-    p.text = "Connect for collaborations, panels & student leadership networks"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(10)
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_MUTED_TEXT
+        # Handle & Desc
+        tf_desc = create_textbox(s9, cx + Inches(0.15), Inches(4.7), card_w9 - Inches(0.3), Inches(2.0))
+        p = tf_desc.paragraphs[0]
+        p.text = handle
+        p.font.name = FONT_SERIF
+        p.font.size = Pt(16)
+        p.font.bold = True
+        p.alignment = PP_ALIGN.CENTER
+        p.font.color.rgb = COLOR_NAVY_DEEP
+        p.space_after = Pt(4)
+
+        p2 = tf_desc.add_paragraph()
+        p2.text = desc
+        p2.font.name = FONT_SANS
+        p2.font.size = Pt(9.5)
+        p2.alignment = PP_ALIGN.CENTER
+        p2.font.color.rgb = COLOR_MUTED_TEXT
 
     # =========================================================================
-    # SLIDE 10: CLOSING SCREEN & HORIZON
+    # SLIDE 10: CLOSING SCREEN & HORIZON (CENTERED CONTENT & 3 CLEAN IMAGES)
     # =========================================================================
     s10 = prs.slides.add_slide(blank_layout)
     set_slide_background(s10, COLOR_IVORY)
 
+    # Centered Logo
     if os.path.exists('assets/logos/rahat_logo.jpeg'):
-        s10.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(5.416), Inches(1.0), width=Inches(2.5), height=Inches(2.5))
+        s10.shapes.add_picture('assets/logos/rahat_logo.jpeg', Inches(5.866), Inches(0.5), width=Inches(1.6), height=Inches(1.6))
 
-    tf10 = create_textbox(s10, Inches(1.0), Inches(3.8), Inches(11.333), Inches(3.2))
+    tf10 = create_textbox(s10, Inches(1.0), Inches(2.15), Inches(11.333), Inches(2.3))
     p = tf10.paragraphs[0]
-    p.text = "“MAKING SPACE”"
+    p.text = "RAHAT"
     p.font.name = FONT_SERIF
-    p.font.size = Pt(44)
+    p.font.size = Pt(36)
     p.font.bold = True
     p.alignment = PP_ALIGN.CENTER
     p.font.color.rgb = COLOR_NAVY_DEEP
-    p.space_after = Pt(8)
+    p.space_after = Pt(2)
+
+    p = tf10.add_paragraph()
+    p.text = "AND THIS IS ONLY THE BEGINNING."
+    p.font.name = FONT_SANS
+    p.font.size = Pt(11)
+    p.font.bold = True
+    p.alignment = PP_ALIGN.CENTER
+    p.font.color.rgb = COLOR_RAHAT_RED
+    p.space_after = Pt(4)
+
+    p = tf10.add_paragraph()
+    p.text = "More conversations. More stories. More spaces. More people."
+    p.font.name = FONT_SERIF
+    p.font.size = Pt(14)
+    p.font.italic = True
+    p.alignment = PP_ALIGN.CENTER
+    p.font.color.rgb = COLOR_NAVY_DEEP
+    p.space_after = Pt(4)
 
     p = tf10.add_paragraph()
     p.text = "Rahat to all."
     p.font.name = FONT_SERIF
-    p.font.size = Pt(26)
+    p.font.size = Pt(18)
+    p.font.bold = True
     p.font.italic = True
     p.alignment = PP_ALIGN.CENTER
     p.font.color.rgb = COLOR_RAHAT_RED
-    p.space_after = Pt(14)
 
-    p = tf10.add_paragraph()
-    p.text = "mitbengaluru.rahat@gmail.com  •  MIT Bengaluru"
-    p.font.name = FONT_SANS
-    p.font.size = Pt(12)
-    p.font.bold = True
-    p.alignment = PP_ALIGN.CENTER
-    p.font.color.rgb = COLOR_MUTED_TEXT
+    # Bottom 3 Clean Non-Overlapping Showcase Images
+    gallery10 = [
+        ('assets/05_TECHSOLSTICE_NEXUS/techsolstice_nexus_collage_02.jpeg', 'COMMUNITY NEXUS'),
+        ('assets/02_GRATITUDE_FEELINGS/gratitude_board_scrapbooking.jpeg', 'GRATITUDE & EXPRESSION'),
+        ('assets/09_AUDITORIUM_SCREENING/event_writing_frame.png', 'SHARED REFLECTIONS')
+    ]
+    w10 = Inches(3.65)
+    g10 = Inches(0.38)
+    sx10 = Inches(0.8)
+    y10 = Inches(4.7)
+    h10 = Inches(2.3)
+
+    for m_idx, (g_path, g_tag) in enumerate(gallery10):
+        gx = sx10 + m_idx * (w10 + g10)
+        card_g = s10.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE, gx, y10, w10, h10)
+        card_g.fill.solid()
+        card_g.fill.fore_color.rgb = COLOR_WHITE
+        card_g.line.color.rgb = COLOR_BORDER_LIGHT
+
+        if os.path.exists(g_path):
+            s10.shapes.add_picture(g_path, gx, y10, width=w10, height=h10 - Inches(0.4))
+
+        tf_tag = create_textbox(s10, gx, y10 + h10 - Inches(0.38), w10, Inches(0.35))
+        p = tf_tag.paragraphs[0]
+        p.text = g_tag
+        p.font.name = FONT_SANS
+        p.font.size = Pt(8.5)
+        p.font.bold = True
+        p.alignment = PP_ALIGN.CENTER
+        p.font.color.rgb = COLOR_NAVY_DEEP
 
     # Save
     out_path = '/Users/pavanaksshay/rahat/RAHAT_Inauguration_Presentation.pptx'
